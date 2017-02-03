@@ -1,5 +1,15 @@
 {% extends 'tasma/base.html' %}
 
 {% block content %}
-	{{dane}}
+	{% for each in dane %}
+	{% ifchanged each.nr %}
+	<p>--------------------</p>
+	<p>{{ each.nr }}</p>	
+	{% endifchanged %}
+	<ul>
+	{% for i in each.etykieta_set.all %}
+		<li>{{ i.element }}</li>
+	{% endfor %}
+	</ul>
+	{% endfor %}        
 {% endblock content %}
